@@ -19,4 +19,4 @@ To run the application, execute the following command and open http://127.0.0.1:
 ```
 python __init__.py
 ```
-![Path travelled based on instructions](https://github.com/pkaplish20/AltaML_Coding_Exercise/tree/master/Assets)
+![Path travelled based on instructions](https://github.com/pkaplish20/AltaML_Coding_Exercise/tree/master/Assets/Path.png)
