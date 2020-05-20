@@ -17,9 +17,9 @@ There is directions zip file which contains different text files with commmands.
 ____________________________________________________________________________________________________
 Download the code and install the dependencies required. To run the application, execute the following command and open http://127.0.0.1:5000 in your browser. Upload the file using the 'Browse' and 'Upload' buttons. The path traveled by turtle is displayed as a graph.
 The graph represents the following things:
-1. The end location of the turtle is displayed as a coordinate highlighted in red.
-2. The orientation of the turtle is depicted by the arrow associated with the point. 
-3. All of the points where the turtle has traveled to more than once are highlighted in green.
+1. the end location of the turtle, which is displayed as a coordinate highlighted in red.
+2. the orientation of the turtle, which is depicted by the arrow associated with the point. 
+3. all of the points where the turtle has traveled to more than once, which are highlighted in green.
 ```
 python __init__.py
 ```
