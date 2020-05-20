@@ -1,4 +1,4 @@
-Imagine you're a turtle starting at 0,0 that needs to follow the directions in a text file. Each letter represents a movement, L means the turtle turns counterclockwise, R means the turtle turns clockwise, and F means forward. Note, turning the turtle only changes the turtle's orientation. This is an application that takes in a text file and displays in a visual manner the path the turtle travels and highlights the locations where the turtle crosses his own path.  
+Imagine you're a turtle starting at 0,0 that needs to follow the directions in a text file. Inside the text file, you will see characters such as LLRFLFLF. Each letter represents a movement, L means the turtle turns counterclockwise, R means the turtle turns clockwise, and F means forward. Note, turning the turtle only changes the turtle's orientation. This is an application that takes in a text file and displays in a visual manner the path the turtle travels and highlights the locations where the turtle crosses his own path.  
 
 ### Project
 _______________________________________________________________________________________________
