@@ -23,4 +23,4 @@ The graph represents the following things:
 ```
 python __init__.py
 ```
-![Path travelled based on instructions](https://github.com/pkaplish20/AltaML_Coding_Exercise/tree/master/Assets/Path.png)
+! [Path travelled based on instructions](https://github.com/pkaplish20/AltaML_Coding_Exercise/tree/master/Assets/Path.png)
