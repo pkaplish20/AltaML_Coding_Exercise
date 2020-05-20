@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+  <div class="container">
+    <div class="row">
+      <form id="inputform" method="post">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span><i class="material-icons left">file_upload</i>Browse</span>
+            <input type="file" id="files" name='file'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col s12 m6 l4"></div>
+      <div class="col s12 m6 l4">
+        <div class="center">
+          <a id="upload" class="waves-effect waves-light btn-small teal" ><i class="material-icons right">exit_to_app</i>Upload</a>  
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id='myDiv'></div>
+      <canvas id="myCanvas" width="1000" height="1400" style="border:1px solid #d3d3d3;">
+      </canvas>
+    </div>
+  </div>
+
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="  https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var lastx;
+    var lasty;
+    var multiplyBy = 10;
+    var currentDirection = 'North';
+    const ctx = canvas.getContext('2d');
+    $(document).ready(function () {
+    $(function() {
+      $('#upload').click(function() {
+        ctx.clearRect(-500,-500,1100,2000);
+        ctx.setTransform(1,0,0,-1,0,canvas.height);    
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.moveTo(0,0);
+        ctx.save();
+        var form_data = new FormData($('#inputform')[0]);
+        $.ajax({
+          type: 'POST',
+          url: '/uploadFile',
+          data: form_data,
+          contentType: false,
+          processData: false,
+          dataType: 'json'
+          }).done(function(response) {
+            plotgraph(response);
+            }).fail(function(response) {
+              alert('failed');
+              });
+            });
+          });
+        });
+
+        function plotgraph(response) 
+        {
+          ctx.strokeStyle="#000000";
+          List = response['coordinates_list'];
+          currentDirection = response['last_orientation'];
+          ctx.beginPath();
+          ctx.moveTo(-800,0);
+          ctx.lineTo(800,0);
+          ctx.stroke();
+          ctx.moveTo(0,-500);
+          ctx.lineTo(0, 500);
+          ctx.stroke(); 
+          for(i=0; i<List.length; i++)
+          {
+            ctx.lineTo(List[i][0] * multiplyBy ,List[i][1] * multiplyBy);
+            lastx = List[i][0] * multiplyBy;
+            lasty = List[i][1] * multiplyBy;
+            if(checkRepeat(List[i][0],List[i][1],i))
+            {
+              ctx.fillStyle = "#32CD32";
+              ctx.fillRect((List[i][0] * multiplyBy) - 2.5 , (List[i][1] * multiplyBy) - 2.5,5,5);
+            }
+          }
+          function checkRepeat(x,y,i)
+          {
+            var check=false;
+            for(var j=0; j<i;j++)
+            {
+              if(List[j][0]==x && List[j][1]==y)
+              { 
+                check=true;
+              }
+            }
+            return check;
+          }
+              
+          ctx.stroke();
+
+          if(currentDirection == 'South')
+          {
+            drawLineWithArrows(lastx,lasty - 1,lastx,lasty,5,8,true,false);
+          }
+          else if(currentDirection == 'North')
+          {
+            drawLineWithArrows(lastx,lasty + 1,lastx,lasty,5,8,true,false);
+          }
+          else if(currentDirection == 'West')
+          {
+            drawLineWithArrows(lastx - 1,lasty,lastx,lasty,5,8,true,false);
+          }
+          else if(currentDirection == 'East')
+          {
+            drawLineWithArrows(lastx + 1,lasty,lastx,lasty,5,8,true,false);
+          }
+              
+          DisplayText("(0,0)" , 0, 0);  
+          DisplayText("+ x",400, 10);
+          DisplayText("- y",10, -180);
+          DisplayText("- x",-400, 10);
+          DisplayText("+ y",10, 180);
+        }; 
+        
+        function DisplayText(str,x,y)
+        {
+          ctx.fillStyle = "#FF0000";                  
+          ctx.font = "24px Arial";                 
+          ctx.setTransform(1,0,0,1,0,canvas.height);
+          ctx.translate(canvas.width/2,-canvas.height/2);
+          ctx.fillText(str , x, -y);
+          ctx.restore();
+        } 
+
+          // x0,y0: the line's starting point
+          // x1,y1: the line's ending point
+          // width: the distance the arrowhead perpendicularly extends away from the line
+          // height: the distance the arrowhead extends backward from the endpoint
+          // arrowStart: true/false directing to draw arrowhead at the line's starting point
+          // arrowEnd: true/false directing to draw arrowhead at the line's ending point
+
+        function drawLineWithArrows(x0,y0,x1,y1,aWidth,aLength,arrowStart,arrowEnd)
+        {
+          var dx=x1-x0;
+          var dy=y1-y0;
+          var angle=Math.atan2(dy,dx);
+          var length=Math.sqrt(dx*dx+dy*dy);
+          ctx.translate(x0,y0);
+          ctx.rotate(angle);
+          ctx.beginPath();
+          ctx.moveTo(0,0);
+          ctx.lineTo(length,0);
+          if(arrowStart)
+          {
+            ctx.moveTo(aLength,-aWidth);
+            ctx.lineTo(0,0);
+            ctx.lineTo(aLength,aWidth);
+            DisplayText("("+lastx/multiplyBy+","+lasty/multiplyBy+")" , lastx +5, lasty +5);
+            ctx.strokeStyle = "#FF0000";
+          }
+          if(arrowEnd)
+          {
+            ctx.moveTo(length-aLength,-aWidth);
+            ctx.lineTo(length,0);
+            ctx.lineTo(length-aLength,aWidth);
+            ctx.fillRect(0, 0, 4, 4); 
+          }
+          ctx.stroke();
+          ctx.setTransform(1,0,1,1,0,0);
+          }
+
+          function findOne(haystack, arr) {
+            return arr.some(function (v) {
+              return haystack.indexOf(v) >= 0;
+              });
+          };
+    </script>
+  </body>
+</html>
