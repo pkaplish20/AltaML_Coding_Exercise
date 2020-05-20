@@ -8,7 +8,10 @@ python==3.7.6
 flask==1.1.0
 Werkzeug==1.0.0
 ```
-
+Install requirements.txt using the following command
+```
+pip install -r requirements.txt
+```
 #### Dataset
 ____________________________________________________________________________________________________
 There is directions zip file which contains different text files with commmands. 
