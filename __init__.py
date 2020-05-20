@@ -17,9 +17,6 @@ def extractInfo():
     files[0].seek(0)
     data = files[0].read().decode('UTF-8')
     coord, orientation = get_coordinates(data)
-    for f in files:
-        file_location = os.path.join(os.getcwd()+'/Uploads', secure_filename(f.filename))
-        f.save(file_location)
     return jsonify({'coordinates_list': coord, 'last_orientation': orientation})
 
 if __name__ == '__main__':
