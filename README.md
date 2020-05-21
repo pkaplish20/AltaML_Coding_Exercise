@@ -8,7 +8,14 @@ python==3.8.3
 flask==1.1.2
 Werkzeug==1.0.1
 ```
-Create a virtual environment inside the project’s root directory using the following command to run the code
+
+#### Dataset
+____________________________________________________________________________________________________
+There is directions zip file which contains different text files with commmands. 
+
+#### Execution
+____________________________________________________________________________________________________
+Download the code and create a virtual environment inside the project’s root directory using the following command to run the code
 on macOS and Linux:
 ```
 python3 -m venv env
@@ -30,17 +37,15 @@ Install the project’s dependencies inside an active virtual environment with t
 ```
 pip install -r requirements.txt
 ```
-#### Dataset
-____________________________________________________________________________________________________
-There is directions zip file which contains different text files with commmands. 
-
-#### Execution
-____________________________________________________________________________________________________
-Download the code and install the dependencies required. To run the application, execute the following command and open http://127.0.0.1:5000 in your browser. Upload the file using the 'Browse' and 'Upload' buttons. The path traveled by turtle is displayed as a graph.
+To run the application, execute the following command 
+```
+python __init__.py
+```
+open http://127.0.0.1:5000 in your browser. Upload the file using the 'Browse' and 'Upload' buttons. The path traveled by turtle is displayed as a graph.
 The graph represents the following things:
-1. the end location of the turtle, which is displayed as a coordinate highlighted in red.
-2. the orientation of the turtle, which is depicted by the arrow associated with the point. 
-3. all of the points where the turtle has traveled to more than once, which are highlighted in green.
+* the end location of the turtle, which is displayed as a coordinate highlighted in red.
+* the orientation of the turtle, which is depicted by the arrow associated with the point. 
+* all of the points where the turtle has traveled to more than once, which are highlighted in green.
 ```
 python __init__.py
 ```
