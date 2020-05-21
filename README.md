@@ -37,7 +37,7 @@ Install the project’s dependencies inside an active virtual environment with t
 ```
 pip install -r requirements.txt
 ```
-To run the application, execute the following command 
+Move to the directory where the __init__.py file is stored. To run the application, execute the following command 
 ```
 python __init__.py
 ```
