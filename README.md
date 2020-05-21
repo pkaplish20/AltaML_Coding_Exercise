@@ -33,11 +33,11 @@ On Windows:
 ```
 .\env\Scripts\activate
 ```
-Install the project’s dependencies inside an active virtual environment with the incantation 
+Move to the directory where requirements.txt is stored and install the project’s dependencies inside an active virtual environment with the incantation 
 ```
 pip install -r requirements.txt
 ```
-Move to the directory where the __init__.py file is stored. To run the application, execute the following command 
+Move to the directory where the (__init__.py) file is stored. To run the application, execute the following command 
 ```
 python __init__.py
 ```
