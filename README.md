@@ -23,14 +23,18 @@ On Windows:
 ```
 py -m venv env
 ```
+To activate virtual environment on Windows, activate script is in the Scripts folder :
+```
+\path\to\env\Scripts\activate
+```
+Example:
+```
+C:\Users\'Username'\venv\Scripts\activate.bat
+```
 Activate the virtual environment using the following command
 on macOS and Linux:
 ```
 source env/bin/activate
-```
-On Windows:
-```
-.\env\Scripts\activate
 ```
 Move to the directory where __requirements.txt__ is stored and install the project’s dependencies inside an active virtual environment with the incantation 
 ```
