@@ -76,7 +76,7 @@
             });
           });
         });
-
+        // plot graph 
         function plotgraph(response) 
         {
           ctx.strokeStyle="#000000";
@@ -100,6 +100,9 @@
               ctx.fillRect((List[i][0] * multiplyBy) - 2.5 , (List[i][1] * multiplyBy) - 2.5,5,5);
             }
           }
+          // check if the turtle has traveled more than once through that point
+          // x: x coordinate of point
+          // y: y coordinate of point
           function checkRepeat(x,y,i)
           {
             var check=false;
@@ -138,7 +141,7 @@
           DisplayText("- x",-400, 10);
           DisplayText("+ y",10, 180);
         }; 
-        
+        // display the text on graph
         function DisplayText(str,x,y)
         {
           ctx.fillStyle = "#FF0000";                  
