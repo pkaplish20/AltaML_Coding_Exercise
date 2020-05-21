@@ -9,7 +9,7 @@ flask==1.1.2
 Werkzeug==1.0.1
 ```
 Create a virtual environment inside the project’s root directory using the following command to run the code
-On macOS and Linux:
+on macOS and Linux:
 ```
 python3 -m venv env
 ```
@@ -18,7 +18,7 @@ On Windows:
 py -m venv env
 ```
 Activate the virtual environment using the following command
-On macOS and Linux:
+on macOS and Linux:
 ```
 source env/bin/activate
 ```
