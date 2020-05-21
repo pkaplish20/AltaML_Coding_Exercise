@@ -15,8 +15,7 @@ There is directions zip file which contains different text files with commmands.
 
 #### Execution
 ____________________________________________________________________________________________________
-Download the code and create a virtual environment inside the project’s root directory using the following command to run the code
-on macOS and Linux:
+Download the code and create a virtual environment inside the project’s root directory using the following command on macOS and Linux:
 ```
 python3 -m venv env
 ```
