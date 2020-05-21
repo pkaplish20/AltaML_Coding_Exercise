@@ -46,7 +46,5 @@ The graph represents the following things:
 * the end location of the turtle, which is displayed as a coordinate highlighted in red.
 * the orientation of the turtle, which is depicted by the arrow associated with the point. 
 * all of the points where the turtle has traveled to more than once, which are highlighted in green.
-```
-python __init__.py
-```
+
 ![path traveled based on instructions](https://github.com/pkaplish20/AltaML_Coding_Exercise/blob/master/Assets/Path.png)
