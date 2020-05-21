@@ -3,7 +3,7 @@ def get_coordinates(data):
     x, y = 0, 0
     orientation = "North"
     inputList = list(data)
-    for i in inputList:
+    for i in inputList:   
         if i == 'L':
             if orientation == 'North':
                 orientation = 'West'
