@@ -41,7 +41,7 @@ To run the application, execute the following command
 ```
 python __init__.py
 ```
-open http://127.0.0.1:5000 in your browser. Upload the file using the 'Browse' and 'Upload' buttons. The path traveled by turtle is displayed as a graph.
+Open http://127.0.0.1:5000 in your browser. Upload the file using the 'Browse' and 'Upload' buttons. The path traveled by turtle is displayed as a graph.
 The graph represents the following things:
 * the end location of the turtle, which is displayed as a coordinate highlighted in red.
 * the orientation of the turtle, which is depicted by the arrow associated with the point. 
