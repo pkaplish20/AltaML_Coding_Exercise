@@ -4,11 +4,29 @@ Imagine you're a turtle starting at 0,0 that needs to follow the directions in a
 _______________________________________________________________________________________________
 Prerequisites
 ```
-python==3.7.6
-flask==1.1.0
-Werkzeug==1.0.0
+python==3.8.3
+flask==1.1.2
+Werkzeug==1.0.1
 ```
-Install requirements.txt using the following command
+Create a virtual environment inside the project’s root directory using the following command to run the code
+On macOS and Linux:
+```
+python3 -m venv env
+```
+On Windows:
+```
+py -m venv env
+```
+Activate the virtual environment using the following command
+On macOS and Linux:
+```
+source env/bin/activate
+```
+On Windows:
+```
+.\env\Scripts\activate
+```
+Install the project’s dependencies inside an active virtual environment with the incantation 
 ```
 pip install -r requirements.txt
 ```
